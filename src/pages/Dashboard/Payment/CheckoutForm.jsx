@@ -4,6 +4,7 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useCart from "../../../hooks/useCart";
 import useAuth from "../../../hooks/useAuth";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 
 const CheckoutForm = () => {
@@ -15,6 +16,8 @@ const CheckoutForm = () => {
     const axiosSecure = useAxiosSecure();
     const { user } = useAuth();
     const [cart, refetch] = useCart();
+    const navigate = useNavigate();
+
     const totalPrice = cart.reduce((total, item) => total + item.price, 0)
 
     useEffect(() => {
@@ -89,14 +92,15 @@ const CheckoutForm = () => {
                 const res = await axiosSecure.post('/payments', payment);
                 console.log('payment saved', res.data);
                 refetch();
-                if(res.data?.paymentResult?.insertedId){
+                if (res.data?.paymentResult?.insertedId) {
                     Swal.fire({
                         position: "top-end",
                         icon: "success",
                         title: "Thank you for the taka paisa",
                         showConfirmButton: false,
                         timer: 1500
-                      });
+                    });
+                    navigate('/dashboard/paymentHistory')
                 }
 
             }
