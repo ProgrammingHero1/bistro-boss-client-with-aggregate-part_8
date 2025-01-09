@@ -1,6 +1,6 @@
 # Bistro Boss Client with Aggregate
 
-Server Repo Link: [Bistro Boss Server with Aggregate](https://github.com/ProgrammingHero1/bistro-boss-server-with-aggregate-part_8)
+Server Repo Link: [Bistro Boss Server with Aggregate](https://github.com/ProgrammingHero1/bistro-boss-server-with-aggregate-part_8).
 
 ## What We Did Today
 
